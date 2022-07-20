@@ -1,0 +1,14 @@
+.card {
+    border: 2px solid blue;
+    padding: 5%;
+    display: flex;
+    font-size: .75rem;
+    flex-shrink: 1;
+    max-width: 40rem;
+}
+
+img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+}
