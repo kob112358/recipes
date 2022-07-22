@@ -3,14 +3,14 @@ import './RecipeHeader.css';
 const RecipeHeader = (props) => {
 
     return (
-        <div>
-            <div>
-                <h2>{props.recipes[0].name.toUpperCase()}</h2>
+        <div className="recipeHeader">
+            <div className="recipeName">
+                {props.recipes.name.toUpperCase()}
             </div>
             <div className="info">
-                <div>Serves: {props.recipes[0].serves} |&nbsp;</div>
-                <div>Prep Time: {props.recipes[0].prepTime} |&nbsp;</div>
-                <div>Cook Time: {props.recipes[0].cookTime}</div>
+                <div>Serves: {props.recipes.serves} &nbsp;</div>
+                <div>Prep Time: {props.recipes.prepTime}min&nbsp;</div>
+                <div>Cook Time: {props.recipes.cookTime}min</div>
             </div>
         </div>
     )

@@ -4,11 +4,13 @@ const RecipeInstructions = (props) => {
 
 
     return (
-        <div>
+        <div className="instructions">
             <h2>INSTRUCTIONS</h2>
-            <div>{props.instructions[0]}</div>
-            <div>{props.instructions[1]}</div>
-            <div>{props.instructions[2]}</div>
+            <ol>
+            {props.instructions.map(instruction => (
+                <li>{instruction}</li>
+            ))}
+            </ol>
         </div>
     )
 }

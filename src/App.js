@@ -1,10 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import RecipeCard from './components/Recipe/RecipeCard';
+import NewRecipe from './components/NewRecipe/NewRecipe';
+import {useState} from 'react';
 
 function App() {
-  const recipes = [
+  const [recipes, setRecipes] = useState([
     {
+      key: 'Autumn Squash Soup',
       name: 'Autumn Squash Soup',
       serves: 4,
       tags: ['entree', 'vegetarian'],
@@ -22,11 +24,21 @@ function App() {
           'Add the garlic, sage, rosemary, and ginger. Stir and cook 30 seconds to 1 minute, until fragrant, then add 3 cups of the broth. Bring to a boil, cover, and reduce heat to a simmer. Cook until the squash is tender, 20 to 30 minutes.',
           'Let cool slightly and pour the soup into a blender, working in batches if necessary, and blend until smooth. If your soup is too thick, add up to 1 cup more broth and blend. Season to taste and serve with parsley, pepitas, and crusty bread.']
     }
-  ]
+  ]);
+
+  const onAddRecipe = (newRecipe) => {
+    setRecipes((prevState) => {
+      return [...prevState, newRecipe];
+    })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <RecipeCard recipes={recipes} />
+        {recipes.map(recipe => (
+          <RecipeCard recipes={recipe} />
+        ))}
+        <NewRecipe addRecipe={onAddRecipe} />
       </header>
     </div>
   );

@@ -3,15 +3,15 @@ import './RecipeIngredients.css';
 function RecipeIngredients(props) {
 
     return (
-        <div>
+        <div className="ingredientList">
             <h2>INGREDIENTS</h2>
+            <div>
             <ul>
-                <li>{props.ingredients[0]}</li>
-                <li>{props.ingredients[1]}</li>
-                <li>{props.ingredients[2]}</li>
-                <li>{props.ingredients[3]}</li>
-                <li>{props.ingredients[4]}</li>
+                {props.ingredients.map(ingredient => (
+                    <li>{ingredient}</li>
+                ))}
             </ul>
+            </div>
         </div>
     )
 }
