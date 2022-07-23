@@ -1,7 +1,8 @@
 import './App.css';
 import RecipeCard from './components/Recipe/RecipeCard';
 import NewRecipe from './components/NewRecipe/NewRecipe';
-import {useState} from 'react';
+import React, {useState} from 'react';
+import ReactDOM from 'react-dom';
 
 function App() {
   const [recipes, setRecipes] = useState([
@@ -25,11 +26,21 @@ function App() {
           'Let cool slightly and pour the soup into a blender, working in batches if necessary, and blend until smooth. If your soup is too thick, add up to 1 cup more broth and blend. Season to taste and serve with parsley, pepitas, and crusty bread.']
     }
   ]);
+  const [showAddNew, setShowAddNew] = useState(null);
+
+  const addNewHandler = () => {
+    setShowAddNew(true);
+  }
+
+  const hideRecipeHandler = () => {
+    setShowAddNew(null);
+  }
 
   const onAddRecipe = (newRecipe) => {
     setRecipes((prevState) => {
       return [...prevState, newRecipe];
     })
+    setShowAddNew(null);
   }
 
   return (
@@ -38,7 +49,8 @@ function App() {
         {recipes.map(recipe => (
           <RecipeCard recipes={recipe} />
         ))}
-        <NewRecipe addRecipe={onAddRecipe} />
+        <button onClick={addNewHandler}>Add new</button>
+        {showAddNew && ReactDOM.createPortal(<NewRecipe addRecipe={onAddRecipe} hideRecipe={hideRecipeHandler} />, document.getElementById('backdrop-root'))}
       </header>
     </div>
   );

@@ -51,6 +51,8 @@ const NewRecipe = (props) => {
   };
 
   return (
+    <>
+    <div className="new-recipe-background" onClick={props.hideRecipe}></div>
     <div className="new-recipe">
       <form onSubmit={onSubmitHandler}>
         <div>
@@ -86,6 +88,7 @@ const NewRecipe = (props) => {
         <button type="submit">Add new recipe</button>
       </form>
     </div>
+    </>
   );
 };
 
